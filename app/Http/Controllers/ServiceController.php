@@ -38,8 +38,13 @@ return view ('index',['services' => $services]);
     {
     
  $validated = $request->validated();
-         
-           Service::create($validated);
+     
+          
+           if ($request->hasFile('image')) {
+        $path = $request->file('image')->store('services', 'public');
+       $validated['image'] = $path;
+    }
+        Service::create($validated);
     }
 
 
@@ -66,9 +71,14 @@ return view ('index',['services' => $services]);
     {
 
         $validated = $request->validated();
-         $service->update($validated);
+         
+         
+          if ($request->hasFile('image')) {
+        $path = $request->file('image')->store('services', 'public');
+         $validated['image'] = $path;
+    }$service->update($validated);
+         return redirect()->route('services.index');
     }
-
     /**
      * Remove the specified resource from storage.
      */

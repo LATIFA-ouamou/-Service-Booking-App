@@ -14,9 +14,7 @@ use App\Http\Controllers\BookingController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route ::redirect('/',"services");
 
 Route::resource('services',ServiceController::class);
 Route::resource('bookings',BookingController::class);
