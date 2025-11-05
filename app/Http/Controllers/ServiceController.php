@@ -69,7 +69,7 @@ return view ('index',['services' => $services]);
      */
     public function update(UpdateServiceRequest $request, Service $service)
     {
-
+  $this->authorize('update', $service); //  Vérifie la Policy
         $validated = $request->validated();
          
          
