@@ -16,15 +16,29 @@ class Service extends Model
         'image',
     ];
 
-
-
-
-
-
-
-    public function bookings()
+//     public function bookings()
+// {
+//     return $this->hasMany(Booking::class);
+// }
+public function detail()
 {
-    return $this->hasMany(Booking::class);
+    return $this->hasOne(ServiceDetail::class);
+}
+
+public function booking()
+{
+    return $this->belongsTo(Booking::class);
+}
+
+
+
+
+
+
+
+public function bookings()
+{
+    return $this->belongsToMany(Booking::class, 'booking_service');
 }
 
 }

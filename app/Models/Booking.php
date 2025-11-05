@@ -15,9 +15,28 @@ class Booking extends Model
         'status'
         
     ];
+// public function service()
+// {
+//     return $this->belongsTo(Service::class);
+// }
+
+
+
+public function services()
+{
+
+    return $this->hasMany(Service::class);
+    
+}
+
+
+
+
+
+
 public function service()
 {
-    return $this->belongsTo(Service::class);
+    return $this->belongsToMany(Service::class, 'booking_service');
 }
 
    
